@@ -1,5 +1,5 @@
-# Documentation
-Available on [disco-oauth.now.sh](https://disco-oauth.now.sh).
+# 2PG OAuth
+Cloned from disco-oauth, but with TypeScript support, and less errors - [disco-oauth.now.sh](https://disco-oauth.now.sh).
 
 ---
 
