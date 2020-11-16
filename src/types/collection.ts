@@ -12,7 +12,7 @@ export default class Connections<T> extends Map {
   }
 
   /** Convert collection to array. */
-  array() {
+  array(): T[] {
     return Array.from(this.values());
   }
 }

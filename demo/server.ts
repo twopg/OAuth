@@ -18,7 +18,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-// TO DISCORD: discord.com/auth/...
+// TO DISCORD: discord.com/api/oauth2/authorize/...
 app.get('/login', (req, res) => res.redirect(client.authCodeLink.url));
 
 // FROM DISCORD: /auth?code=<access_token>
