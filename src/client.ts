@@ -167,7 +167,7 @@ export default class Client {
 
 /** Required options for the client - https://discord.com/developers. */
 export interface ClientOptions {
-  /** Discord client ID */
+  /** Discord client ID. */
   id: string;
   /** Discord application secret. */
   secret: string;
