@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2PG OAuth - Demo</title>
+
+  <style>
+    body {
+      font-family: 'Calibri Light', Courier, monospace;
+    }
+    header,
+    div {
+      margin: 10vh 10vw;
+    }
+    div a {
+      margin-right: 10px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>User</h1>
+    <div>
+      <strong>User:</strong>
+      <span class="username"><%= (user) ? user.username : 'Not logged in' %></span>
+    </div>
+    <div>
+      <strong>Guilds:</strong>
+      <span class="username"><%= (guilds) ? guilds.map :  %></span>
+    </div>
+  </header>
+
+  <div>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
+  </div>
+</body>
+</html>
