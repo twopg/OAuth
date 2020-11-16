@@ -1,8 +1,5 @@
-/**
- * A list of the commonly occurring errors.
- * @type {Map<number, string>}
- */
-const errors = new Map([
+/** A list of the commonly occurring errors. */
+const errors = new Map<number, string>([
   [400, 'Invalid request made'],
   [401, 'Invalid access token'],
   [403, 'Not enough permissions'],
@@ -12,10 +9,12 @@ const errors = new Map([
   [502, 'Server busy, retry after a while']
 ]);
 
-module.exports = class APIError extends Error {
-  constructor(code, ...params) {
+export default class APIError extends Error {
+  constructor(
+    public statusCode: number,
+    ...params: any[]) {
     super(...params);
-    this.statusCode = code;
-    this.message = errors.get(code) || 'An error occurred';
+
+    this.message = errors.get(this.statusCode) || 'An error occurred';
   }
 };
