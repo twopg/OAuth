@@ -12,7 +12,10 @@ app.use(cookies.express(['I', 'store', 'login', 'sessions.']));
 app.get('/', async (req, res) => {
   const key = req.cookies.get('key');
 
-  res.render(`index`, { user: (key) ? await client.getUser(key) : null });
+  res.render(`index`, {
+    user: (key) ? await client.getUser(key) : null,
+    guilds: (key) ? await client.getGuilds(key) : null
+  });
 });
 
 // TO DISCORD: discord.com/auth/...

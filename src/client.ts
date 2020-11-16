@@ -24,7 +24,7 @@ export default class Client {
         state
       };
     } else if (this.options.scopes.length < 1)
-      throw new Error('Scopes are not defined.');
+      throw new TypeError('Scopes are not defined.');
   }
 
   /** Gets the access token for the user to perform further functions. */
@@ -55,7 +55,7 @@ export default class Client {
     } catch (err) {
       throw (err.error
         ? new TypeError(err.error)
-        : new APIError(err['phinResponse'].statusCode));
+        : new APIError(err['phinResponse']?.statusCode));
     }
   }
 
@@ -72,7 +72,7 @@ export default class Client {
           client_id: this.options.id,
           client_secret: this.options.secret,
           grant_type: 'refresh_token',
-          refresh_token: access['refresh_token'],
+          refresh_token: access.refresh_token,
           redirect_uri: this.options.redirectURI,
           scope: this.options.scopes.join(' ')
         }
@@ -86,12 +86,12 @@ export default class Client {
       return jwt.sign(token, this.options.secret, { expiresIn: token['expires_in'] });
     } catch (err) {
       throw (err.error
-        ? new Error(err.error)
-        : new APIError(err['phinResponse'].statusCode));
+        ? new TypeError(err.error)
+        : new APIError(err.phinResponse?.statusCode));
     }
   }
 
-  private getAccessKey(key: string): string {
+  private getAccessKey(key: string): { access_token, token_type, refresh_token } {
     try { return jwt.verify(key, this.options.secret); }
     catch { throw new TypeError('Invalid key provided'); }
   }
@@ -104,7 +104,7 @@ export default class Client {
       const response: any = await phin({
         url: `${this.baseUrl}users/@me`,
         method: 'GET',
-        headers: { Authorization: `${access['token_type']} ${access['access_token']}` },
+        headers: { Authorization: `${access.token_type} ${access.access_token}` },
         parse: 'json'
       });
       if (response.statusCode !== 200)
@@ -113,8 +113,8 @@ export default class Client {
       return new User(response.body);
     } catch (err) {
       throw (err.error
-        ? new Error(err.error)
-        : new APIError(err['phinResponse'].statusCode));
+        ? new TypeError(err.error)
+        : new APIError(err['phinResponse']?.statusCode));
     }
   }
 
@@ -126,17 +126,17 @@ export default class Client {
       const response: any = await phin({
         url: `${this.baseUrl}users/@me/guilds`,
         method: 'GET',
-        headers: { Authorization: `${access['token_type']} ${access['access_token']}` },
+        headers: { Authorization: `${access.token_type} ${access.access_token}` },
         parse: 'json'
       });
       if (response.statusCode !== 200)
         throw new APIError(response.statusCode);
 
       return new Collection<Guild>(response.body);
-    } catch (err) {
+    } catch (err) {      
       throw (err.error
-        ? new Error(err.error)
-        : new APIError(err['phinResponse'].statusCode));
+        ? new TypeError(err.error)
+        : new APIError(err['phinResponse']?.statusCode));
     }
   }
 
@@ -157,8 +157,8 @@ export default class Client {
       return new Collection<Connection>(response.body);
     } catch (err) {
       throw (err.error
-        ? new Error(err.error)
-        : new APIError(err['phinResponse'].statusCode));
+        ? new TypeError(err.error)
+        : new APIError(err['phinResponse']?.statusCode));
     }
   }
 };

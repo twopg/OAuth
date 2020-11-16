@@ -11,9 +11,8 @@ export default class Connections<T> extends Map {
       this.set(c.id, c as T);
   }
 
-  toJSON() {
-    let otr = {};
-    this.forEach((g, k) => otr[k] = g);
-    return otr;
+  /** Convert collection to array */
+  array() {
+    return Array.from(this.values());
   }
 }

@@ -9,10 +9,10 @@
       font-family: 'Calibri Light', Courier, monospace;
     }
     header,
-    div {
+    nav {
       margin: 10vh 10vw;
     }
-    div a {
+    nav a {
       margin-right: 10px;
       text-decoration: none;
     }
@@ -27,13 +27,13 @@
     </div>
     <div>
       <strong>Guilds:</strong>
-      <span class="username"><%= (guilds) ? guilds.map :  %></span>
+      <span class="username"><%= (guilds) ? guilds.array().map(g => g.name).join(', ') : 'N/A' %></span>
     </div>
   </header>
 
-  <div>
+  <nav>
     <a href="/login">Login</a>
     <a href="/logout">Logout</a>
-  </div>
+  </nav>
 </body>
 </html>
