@@ -48,18 +48,34 @@ export default class User {
     this.premiumType = premium_type === 0 ? 'None' : premium_type === 1 ? 'Nitro Classic' : 'Nitro';
     this.bot = bot;
 
-    if ((flags & 1) === 1) this.userFlags.push('Discord Employee');
-    if ((flags & 2) === 2) this.userFlags.push('Discord Partner');
-    if ((flags & 4) === 4) this.userFlags.push('HypeSquad Events');
-    if ((flags & 8) === 8) this.userFlags.push('Bug Hunter Level 1');
-    if ((flags & 64) === 64) this.userFlags.push('HypeSquad House of Bravery');
-    else if ((flags & 128) === 128) this.userFlags.push('HypeSquad House of Brilliance');
-    else if ((flags & 256) === 256) this.userFlags.push('HypeSquad House of Balance');
-    if ((flags & 512) === 512) this.userFlags.push('Early Supporter');
-    if ((flags & 1024) === 1024) this.userFlags.push('Team User');
-    if ((flags & 4096) === 4096) this.userFlags.push('System');
-    if ((flags & 16384) === 16384) this.userFlags.push('Bug Hunter Level 2');
-    if ((flags & 131072) === 131072) this.userFlags.push('Verified Bot Developer');
+    this.buildFlags(flags);
+  }
+
+  private buildFlags(flags: number) {
+    if ((flags & 1) === 1)
+      this.userFlags.push('Discord Employee');
+    if ((flags & 2) === 2)
+      this.userFlags.push('Discord Partner');
+    if ((flags & 4) === 4)
+      this.userFlags.push('HypeSquad Events');
+    if ((flags & 8) === 8)
+      this.userFlags.push('Bug Hunter Level 1');
+    if ((flags & 64) === 64)
+      this.userFlags.push('HypeSquad House of Bravery');
+    else if ((flags & 128) === 128)
+      this.userFlags.push('HypeSquad House of Brilliance');
+    else if ((flags & 256) === 256)
+      this.userFlags.push('HypeSquad House of Balance');
+    if ((flags & 512) === 512)
+      this.userFlags.push('Early Supporter');
+    if ((flags & 1024) === 1024)
+      this.userFlags.push('Team User');
+    if ((flags & 4096) === 4096)
+      this.userFlags.push('System');
+    if ((flags & 16384) === 16384)
+      this.userFlags.push('Bug Hunter Level 2');
+    if ((flags & 131072) === 131072)
+      this.userFlags.push('Verified Bot Developer');
   }
 
   /** The timestamp of the creation of the user's account. */
@@ -70,10 +86,22 @@ export default class User {
   get createdAt() {
     return new Date(this.createdTimestamp);
   }
+  /** Get the URL of a user's display avatar. */
+  get displayAvatarURL() {
+    return this.avatarURL({ dynamic: true, size: 256 });
+  }
 
-  avatarUrl(size = 512): string {
+  /** Get the URL of a user's avatar, with options. */
+  avatarURL(options: AvatarOptions = { size: 512 }): string {
+    const extension = (this.avatarHash.startsWith('a_') && options.dynamic) ? 'gif' : 'png';
+
     return `https://cdn.discordapp.com/${this.avatarHash ? '' : 'embed/'}avatars/${
       this.avatarHash ? `${this.id}/${this.avatarHash}` : this.discriminator % 5
-    }.${this.avatarHash ? (this.avatarHash.startsWith('a_') ? 'gif' : 'png') : 'png'}?size=${size}`;
+    }.${(this.avatarHash) ? extension : 'png'}?size=${options.size}`;
   }
+}
+
+export interface AvatarOptions {
+  dynamic?: boolean;
+  size?: number;
 }
