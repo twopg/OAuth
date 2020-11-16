@@ -1,30 +1,30 @@
 import Collection from './collection';
 
-const enum PermissionType {
-  'CREATE_INSTANT_INVITE' = 1,
-  'KICK_MEMBERS' = 2,
-  'BAN_MEMBERS' = 4,
-  'ADMINISTRATOR' = 8,
-  'MANAGE_CHANNELS' = 0x10,
-  'MANAGE_GUILD' = 0x20,
-  'ADD_REACTION' = 0x40,
-  'VIEW_AUDIT_LOG' = 0x80,
-  'VIEW_CHANNEL' = 0x400,
-  'SEND_MESSAGES' = 0x800,
-  'SEND_TTS_MESSAGES' = 0x100,
-  'MANAGE_MESSAGES' = 0x2000,
-  'EMBED_LINKS' = 0x4000,
-  'ATTACH_FILES' = 0x8000,
-  'READ_MESSAGES_HISTORY' = 0x10000,
-  'MENTION_EVERYONE' = 0x20000,
-  'USE_EXTERNAL_EMOJIS' = 0x40000,
-  'CONNECT' = 0x100000,
-  'SPEAK' = 0x200000,
-  'MUTE_MEMBERS' = 0x400000,
-  'MANAGE_NICKNAMES' = 0x800000,
-  'MANAGE_ROLES' = 0x1000000,
-  'MANAGE_WEBHOOKS' = 0x2000000,
-  'MANAGE_EMOJIS' = 0x4000000
+const permissionConstants = {
+  1: 'CREATE_INSTANT_INVITE',
+  2: 'KICK_MEMBERS',
+  4: 'BAN_MEMBERS',
+  8: 'ADMINISTRATOR',
+  0x10: 'MANAGE_CHANNELS',
+  0x20: 'MANAGE_GUILD',
+  0x40: 'ADD_REACTION',
+  0x80: 'VIEW_AUDIT_LOG',
+  0x400: 'VIEW_CHANNEL',
+  0x800: 'SEND_MESSAGES',
+  0x1000: 'SEND_TTS_MESSAGES',
+  0x2000: 'MANAGE_MESSAGES',
+  0x4000: 'EMBED_LINKS',
+  0x8000: 'ATTACH_FILES',
+  0x10000: 'READ_MESSAGES_HISTORY',
+  0x20000: 'MENTION_EVERYONE',
+  0x40000: 'USE_EXTERNAL_EMOJIS',
+  0x100000: 'CONNECT',
+  0x200000: 'SPEAK',
+  0x400000: 'MUTE_MEMBERS',
+  0x800000: 'MANAGE_NICKNAMES',
+  0x1000000: 'MANAGE_ROLES',
+  0x2000000: 'MANAGE_WEBHOOKS',
+  0x4000000: 'MANAGE_EMOJIS'
 };
 
 export default class Guild {
@@ -43,7 +43,7 @@ export default class Guild {
 
   /** The timestamp of creation of the user's account. */
   get createdTimestamp() {
-    return parseInt((BigInt('0b' + parseInt(this._id).toString(2)) >> 22n).toString()) + 1420070400000;
+    return parseInt((BigInt('0b' + parseInt(this.id).toString(2)) >> 22n).toString()) + 1420070400000;
   }
   /** The time of creation of the user's account. */
   get createdAt() {
@@ -59,16 +59,14 @@ export default class Guild {
     this.permissions = this.parsePermissions(permissions);
   }
 
-  private parsePermissions(perms: PermissionType) {
-    const arr = [];
-
-    for (const c of Object.values(PermissionType)) {
+  private parsePermissions(perms: number) {
+    let p = [];
+    for (let c in permissionConstants) {
       let x = parseInt(c);
-      const hasPerm = (x & perms) === x;
-      if (hasPerm)
-        arr.push(PermissionType);
+      if ((x & perms) === x)
+        p.push(permissionConstants[x]);
     }
-    return arr;
+    return p;
   }
 
   /**
