@@ -15,6 +15,8 @@ export default class APIError extends Error {
     ...params: any[]) {
     super(...params);
 
-    this.message = errors.get(this.statusCode) || 'An error occurred';
+    this.message = errors.get(this.statusCode)
+      || this.message
+      || 'An error occurred';
   }
 };

@@ -7,8 +7,8 @@ export default class Connections<T> extends Map {
   constructor(connections: any[]) {
     super();
 
-    for (let c of connections)
-      this.set(c.id, c as T);
+    for (let item of connections)
+      this.set(item.id, item as T);
   }
 
   /** Convert collection to array. */
