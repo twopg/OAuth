@@ -7,10 +7,12 @@ import Guild from './types/guild';
 import Collection from './types/collection';
 import Connection from './types/connection';
 
+declare type URL = import('url').URL;
+
 export type Scope = 'bot' | 'connections' | 'email' | 'identify' | 'guilds' | 'guilds.join' | 'gdm.join' | 'messages.read' | 'rpc' | 'rpc.api' | 'rpc.notifications.read' | 'webhook.incoming';
 
 export default class Client {
-  private baseUrl = 'https://discord.com/api/';
+  private baseURL = 'https://discord.com/api/';
 
   /** Create a new OAuth2 Client. */
   constructor(private options: ClientOptions) {}
@@ -35,7 +37,7 @@ export default class Client {
     try {
       const response: any = await phin({
         method: 'POST',
-        url: `${this.baseUrl}oauth2/token`,
+        url: `${this.baseURL}oauth2/token`,
         parse: 'json',
         form: {
           client_id: this.options.id,
@@ -65,7 +67,7 @@ export default class Client {
 
     try {
       const response: any = await phin({
-        url: `${this.baseUrl}oauth2/token`,
+        url: `${this.baseURL}oauth2/token`,
         method: 'POST',
         parse: 'json',
         form: {
@@ -102,7 +104,7 @@ export default class Client {
 
     try {
       const response: any = await phin({
-        url: `${this.baseUrl}users/@me`,
+        url: `${this.baseURL}users/@me`,
         method: 'GET',
         headers: { Authorization: `${access.token_type} ${access.access_token}` },
         parse: 'json'
@@ -124,7 +126,7 @@ export default class Client {
     
     try {
       const response: any = await phin({
-        url: `${this.baseUrl}users/@me/guilds`,
+        url: `${this.baseURL}users/@me/guilds`,
         method: 'GET',
         headers: { Authorization: `${access.token_type} ${access.access_token}` },
         parse: 'json'
@@ -146,7 +148,7 @@ export default class Client {
 
     try {
       const response: any = await phin({
-        url: `${this.baseUrl}users/@me/connections`,
+        url: `${this.baseURL}users/@me/connections`,
         method: 'GET',
         headers: { Authorization: `${access['token_type']} ${access['access_token']}` },
         parse: 'json'

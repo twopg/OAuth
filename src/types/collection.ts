@@ -11,7 +11,7 @@ export default class Connections<T> extends Map {
       this.set(c.id, c as T);
   }
 
-  /** Convert collection to array */
+  /** Convert collection to array. */
   array() {
     return Array.from(this.values());
   }
