@@ -6,6 +6,7 @@ import APIError from './errors/api';
 import Guild from './types/guild';
 import Collection from './types/collection';
 import Connection from './types/connection';
+import { Guilds } from './types/guilds';
 
 declare type URL = import('url').URL;
 
@@ -34,31 +35,25 @@ export default class Client {
     if (!code)
       throw new TypeError('Authorization code not provided.');
 
-    try {
-      const response: any = await phin({
-        method: 'POST',
-        url: `${this.baseURL}oauth2/token`,
-        parse: 'json',
-        form: {
-          client_id: this.options.id,
-          client_secret: this.options.secret,
-          grant_type: 'authorization_code',
-          code: code,
-          redirect_uri: this.options.redirectURI,
-          scope: this.options.scopes.join(' ')
-        }
-      });
-      if (response.statusCode === 200) {
-        let token = response.body;
-        token['expireTimestamp'] = Date.now() + token['expires_in'] * 1000 - 10000;
-        return jwt.sign(token, this.options.secret, { expiresIn: token['expires_in'] });
-      } else
-        throw new APIError(response.statusCode);
-    } catch (err) {
-      throw (err.error
-        ? new TypeError(err.error)
-        : new APIError(err['phinResponse']?.statusCode));
-    }
+    const response: any = await phin({
+      method: 'POST',
+      url: `${this.baseURL}oauth2/token`,
+      parse: 'json',
+      form: {
+        client_id: this.options.id,
+        client_secret: this.options.secret,
+        grant_type: 'authorization_code',
+        code: code,
+        redirect_uri: this.options.redirectURI,
+        scope: this.options.scopes.join(' ')
+      }
+    });
+    if (response.statusCode === 200) {
+      let token = response.body;
+      token['expireTimestamp'] = Date.now() + token['expires_in'] * 1000 - 10000;
+      return jwt.sign(token, this.options.secret, { expiresIn: token['expires_in'] });
+    } else
+      throw new APIError(response.statusCode);
   }
 
   /** Gets a new access token for the user whose access token has expired. */
@@ -86,7 +81,7 @@ export default class Client {
       token['expireTimestamp'] = Date.now() + token['expires_in'] * 1000 - 10000;
 
       return jwt.sign(token, this.options.secret, { expiresIn: token['expires_in'] });
-    } catch (err) {
+    } catch (err) {      
       throw (err.error
         ? new TypeError(err.error)
         : new APIError(err.phinResponse?.statusCode));
@@ -134,7 +129,7 @@ export default class Client {
       if (response.statusCode !== 200)
         throw new APIError(response.statusCode);
 
-      return new Collection<Guild>(response.body);
+      return new Guilds(response.body);
     } catch (err) {      
       throw (err.error
         ? new TypeError(err.error)

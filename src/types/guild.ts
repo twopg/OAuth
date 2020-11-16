@@ -1,5 +1,3 @@
-import Collection from './collection';
-
 const permissionConstants = {
   1: 'CREATE_INSTANT_INVITE',
   2: 'KICK_MEMBERS',
@@ -60,11 +58,11 @@ export default class Guild {
   }
 
   private parsePermissions(perms: number) {
-    let p = [];
+    const p = [];
     for (let c in permissionConstants) {
-      let x = parseInt(c);
-      if ((x & perms) === x)
-        p.push(permissionConstants[x]);
+      let permNum = parseInt(c);
+      if ((permNum & perms) === permNum)
+        p.push(permissionConstants[permNum]);
     }
     return p;
   }
