@@ -1,6 +1,6 @@
 {
-  "name": "2pg-oauth",
-  "version": "1.0.1",
+  "name": "@2pg/oauth",
+  "version": "1.0.2",
   "description": "Simply make Discord OAuth requests. Built with TypeScript, used by 2PG.",
   "main": "lib/client.js",
   "scripts": {
@@ -8,7 +8,11 @@
     "demo": "ts-node-dev demo/server.ts"
   },
   "repository": {
+    "type": "git",
     "url": "https://github.com/twopg/OAuth.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "discord",
