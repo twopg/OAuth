@@ -22,6 +22,8 @@ export default class User {
   premiumType: string;
   /** Whether the user is a discord bot. */
   bot: boolean;
+  /** Get the URL of a user's display avatar. */
+  readonly displayAvatarURL = this.avatarURL({ dynamic: true, size: 256 });
 
   constructor({
     username,
@@ -79,16 +81,12 @@ export default class User {
   }
 
   /** The timestamp of the creation of the user's account. */
-  get createdTimestamp() {
+  get createdTimestamp() { // FIXME: add support for this
     return parseInt((BigInt('0b' + parseInt(this.id).toString(2)) >> 22n).toString()) + 1420070400000;
   }
   /** The time of creation of the user's account. */
   get createdAt() {
     return new Date(this.createdTimestamp);
-  }
-  /** Get the URL of a user's display avatar. */
-  get displayAvatarURL() {
-    return this.avatarURL({ dynamic: true, size: 256 });
   }
 
   /** Get the URL of a user's avatar, with options. */
