@@ -100,6 +100,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#avatarhash" class="tsd-kind-icon">avatar<wbr>Hash</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#bot" class="tsd-kind-icon">bot</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#discriminator" class="tsd-kind-icon">discriminator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#displayavatarurl" class="tsd-kind-icon">display<wbr>AvatarURL</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#emailid" class="tsd-kind-icon">email<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#emailverified" class="tsd-kind-icon">email<wbr>Verified</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_types_user_.user.html#id" class="tsd-kind-icon">id</a></li>
@@ -115,7 +116,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_types_user_.user.html#createdat" class="tsd-kind-icon">created<wbr>At</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_types_user_.user.html#createdtimestamp" class="tsd-kind-icon">created<wbr>Timestamp</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_types_user_.user.html#displayavatarurl" class="tsd-kind-icon">display<wbr>AvatarURL</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -140,7 +140,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L24">src/types/user.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L26">src/types/user.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -197,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">avatar<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L20">src/types/user.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L20">src/types/user.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -212,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">bot<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L24">src/types/user.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L24">src/types/user.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L10">src/types/user.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L10">src/types/user.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -237,12 +237,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="displayavatarurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> display<wbr>AvatarURL</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>AvatarURL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = this.avatarURL({ dynamic: true, size: 256 })</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L26">src/types/user.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get the URL of a user&#39;s display avatar.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="emailid" class="tsd-anchor"></a>
 					<h3>email<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">email<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L14">src/types/user.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L14">src/types/user.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -257,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">email<wbr>Verified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L16">src/types/user.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L16">src/types/user.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -272,7 +287,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L12">src/types/user.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L12">src/types/user.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -287,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">isMFAEnabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L8">src/types/user.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L8">src/types/user.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -302,7 +317,7 @@
 					<div class="tsd-signature tsd-kind-icon">locale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L6">src/types/user.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L6">src/types/user.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -317,7 +332,7 @@
 					<div class="tsd-signature tsd-kind-icon">premium<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L22">src/types/user.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L22">src/types/user.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -332,7 +347,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<wbr>Flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L18">src/types/user.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L18">src/types/user.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -347,7 +362,7 @@
 					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L4">src/types/user.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L4">src/types/user.ts:4</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,7 +384,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L86">src/types/user.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L88">src/types/user.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -391,7 +406,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L82">src/types/user.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L84">src/types/user.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -400,28 +415,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="displayavatarurl" class="tsd-anchor"></a>
-					<h3>display<wbr>AvatarURL</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> displayAvatarURL<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L90">src/types/user.ts:90</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get the URL of a user&#39;s display avatar.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -438,7 +431,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L95">src/types/user.ts:95</a></li>
+									<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L93">src/types/user.ts:93</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,7 +459,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/twopg/oauth/blob/db3a834/src/types/user.ts#L54">src/types/user.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/twopg/oauth/blob/2075b4e/src/types/user.ts#L56">src/types/user.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -530,6 +523,9 @@
 								<a href="_types_user_.user.html#discriminator" class="tsd-kind-icon">discriminator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_types_user_.user.html#displayavatarurl" class="tsd-kind-icon">display<wbr>AvatarURL</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_types_user_.user.html#emailid" class="tsd-kind-icon">email<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -558,9 +554,6 @@
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_types_user_.user.html#createdtimestamp" class="tsd-kind-icon">created<wbr>Timestamp</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_types_user_.user.html#displayavatarurl" class="tsd-kind-icon">display<wbr>AvatarURL</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_types_user_.user.html#avatarurl" class="tsd-kind-icon">avatarURL</a>
