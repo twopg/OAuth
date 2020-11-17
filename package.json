@@ -1,6 +1,6 @@
 {
   "name": "@2pg/oauth",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simply make Discord OAuth requests. Built with TypeScript, used by 2PG.",
   "main": "lib/client.js",
   "scripts": {

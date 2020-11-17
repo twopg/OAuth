@@ -81,8 +81,8 @@ export default class User {
   }
 
   /** The timestamp of the creation of the user's account. */
-  get createdTimestamp() { // FIXME: add support for this
-    return parseInt((BigInt('0b' + parseInt(this.id).toString(2)) >> 22n).toString()) + 1420070400000;
+  get createdTimestamp() {
+    return parseInt((BigInt(this.id) >> BigInt(22)).toString()) + 1420070400000;
   }
   /** The time of creation of the user's account. */
   get createdAt() {

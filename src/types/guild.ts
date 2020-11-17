@@ -41,7 +41,7 @@ export default class Guild {
 
   /** The timestamp of creation of the user's account. */
   get createdTimestamp() {
-    return parseInt((BigInt('0b' + parseInt(this.id).toString(2)) >> 22n).toString()) + 1420070400000;
+    return parseInt((BigInt(this.id) >> BigInt(22)).toString()) + 1420070400000;
   }
   /** The time of creation of the user's account. */
   get createdAt() {
