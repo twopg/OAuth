@@ -22,4 +22,4 @@ const user = await client.getUser(key); // { id: '...', username: 'ADAMJR', ... 
 const guilds = await client.getGuilds(key); // Collection<{ id: '...', name: '2PG', ... }>
 ```
 
-![Discord](https://img.shields.io/discord/685862664223850497?color=46828d&label=Support&style=for-the-badge)
+[![Discord](https://img.shields.io/discord/685862664223850497?color=46828d&label=Support&style=for-the-badge)]('https://discord.io/twopg')
