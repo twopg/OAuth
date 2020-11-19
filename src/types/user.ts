@@ -23,7 +23,7 @@ export default class User {
   /** Whether the user is a discord bot. */
   bot: boolean;
   /** Get the URL of a user's display avatar. */
-  readonly displayAvatarURL = this.avatarURL({ dynamic: true, size: 256 });
+  readonly displayAvatarURL: string;
 
   constructor({
     username,
@@ -49,6 +49,7 @@ export default class User {
     this.userFlags = [];
     this.premiumType = premium_type === 0 ? 'None' : premium_type === 1 ? 'Nitro Classic' : 'Nitro';
     this.bot = bot;
+    this.displayAvatarURL = this.avatarURL({ dynamic: true, size: 256 });
 
     this.buildFlags(flags);
   }
@@ -91,7 +92,7 @@ export default class User {
 
   /** Get the URL of a user's avatar, with options. */
   avatarURL(options: AvatarOptions = { size: 512 }): string {
-    const extension = (this.avatarHash.startsWith('a_') && options.dynamic) ? 'gif' : 'png';
+    const extension = (this.avatarHash?.startsWith('a_') && options.dynamic) ? 'gif' : 'png';
 
     return `https://cdn.discordapp.com/${this.avatarHash ? '' : 'embed/'}avatars/${
       this.avatarHash ? `${this.id}/${this.avatarHash}` : this.discriminator % 5
