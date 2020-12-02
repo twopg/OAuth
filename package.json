@@ -1,6 +1,6 @@
 {
   "name": "@2pg/oauth",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Simply make Discord OAuth requests. Built with TypeScript, used by 2PG.",
   "main": "lib/client.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "license": "MIT",
   "homepage": "https://twopg.github.io/music",
   "dependencies": {
+    "@discordjs/collection": "^0.1.6",
     "cookies": "^0.8.0",
     "ejs": "^3.1.5",
     "jsonwebtoken": "^8.5.1",

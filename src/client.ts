@@ -4,11 +4,8 @@ import uid from 'uid';
 import User from './types/user';
 import APIError from './errors/api';
 import Guild from './types/guild';
-import Collection from './types/collection';
 import Connection from './types/connection';
-import { Guilds } from './types/guilds';
-
-declare type URL = import('url').URL;
+import Collection from '@discordjs/collection';
 
 export type Scope = 'bot' | 'connections' | 'email' | 'identify' | 'guilds' | 'guilds.join' | 'gdm.join' | 'messages.read' | 'rpc' | 'rpc.api' | 'rpc.notifications.read' | 'webhook.incoming';
 
@@ -78,10 +75,10 @@ export default class Client {
         throw new APIError(response.statusCode);
       
       let token = response.body;
-      token['expireTimestamp'] = Date.now() + token['expires_in'] * 1000 - 10000;
+      token.expireTimestamp = Date.now() + token['expires_in'] * 1000 - 10000;
 
-      return jwt.sign(token, this.options.secret, { expiresIn: token['expires_in'] });
-    } catch (err) {      
+      return jwt.sign(token, this.options.secret, { expiresIn: token.expires_in });
+    } catch (err) {
       throw (err.error
         ? new TypeError(err.error)
         : new APIError(err.phinResponse?.statusCode));
@@ -90,7 +87,7 @@ export default class Client {
 
   private getAccessKey(key: string): { access_token, token_type, refresh_token } {
     try { return jwt.verify(key, this.options.secret); }
-    catch { throw new TypeError('Invalid key provided'); }
+    catch (error) { throw error; }
   }
 
   /** Gets the user who has authorized using the OAuth2 flow. */
@@ -116,7 +113,7 @@ export default class Client {
   }
 
   /** Gets the guilds of an authorized user. */
-  async getGuilds(key: string): Promise<Collection<Guild>> {
+  async getGuilds(key: string): Promise<Collection<string, Guild>> {
     const access = this.getAccessKey(key);
     
     try {
@@ -129,16 +126,18 @@ export default class Client {
       if (response.statusCode !== 200)
         throw new APIError(response.statusCode);
 
-      return new Guilds(response.body);
-    } catch (err) {      
-      throw (err.error
-        ? new TypeError(err.error)
-        : new APIError(err['phinResponse']?.statusCode));
+      const guilds = new Collection<string, Guild>();
+      for (const guild of response.body)
+        guilds.set(guild.id, new Guild(guild));
+      
+      return guilds;
+    } catch (err) {
+      throw err;
     }
   }
 
   /** Gets the connected third-party accounts of an authorized user. */
-  async getConnections(key: string): Promise<Collection<Connection>> {
+  async getConnections(key: string): Promise<Collection<string, Connection>> {
     const access = this.getAccessKey(key);
 
     try {
@@ -151,7 +150,7 @@ export default class Client {
       if (response.statusCode !== 200)
         throw new APIError(response.statusCode);
         
-      return new Collection<Connection>(response.body);
+      return new Collection<string, Connection>(response.body);
     } catch (err) {
       throw (err.error
         ? new TypeError(err.error)
