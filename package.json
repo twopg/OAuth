@@ -21,7 +21,7 @@
   ],
   "author": "theADAMJR",
   "license": "MIT",
-  "homepage": "https://twopg.github.io/music",
+  "homepage": "https://twopg.github.io/oauth",
   "dependencies": {
     "@discordjs/collection": "^0.1.6",
     "cookies": "^0.8.0",

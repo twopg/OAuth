@@ -1,6 +1,8 @@
 # 2PG OAuth
 Cloned from disco-oauth, but with TypeScript support, and less errors - [Docs](https://twopg.github.io/oauth).
 
+[![Discord](https://img.shields.io/discord/685862664223850497?color=46828d&label=Support&style=for-the-badge)](https://discord.io/twopg)
+
 **Full Examples**: [Demo](/tree/stable/demo), [2PG](https://github.com/twopg/Bot)
 
 ## 1 - Install
@@ -22,4 +24,3 @@ const user = await client.getUser(key); // { id: '...', username: 'ADAMJR', ... 
 const guilds = await client.getGuilds(key); // Collection<{ id: '...', name: '2PG', ... }>
 ```
 
-[![Discord](https://img.shields.io/discord/685862664223850497?color=46828d&label=Support&style=for-the-badge)](https://discord.io/twopg)
