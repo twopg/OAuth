@@ -149,8 +149,12 @@ export default class Client {
       });
       if (response.statusCode !== 200)
         throw new APIError(response.statusCode);
+      
+      const connections = new Collection<string, Connection>();
+      for (const connection of response.body)
+        connections.set(connection.id, connection);
         
-      return new Collection<string, Connection>(response.body);
+      return connections;
     } catch (err) {
       throw (err.error
         ? new TypeError(err.error)
