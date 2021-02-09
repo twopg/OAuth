@@ -9,7 +9,7 @@ import Collection from '@discordjs/collection';
 
 export type Scope = 'bot' | 'connections' | 'email' | 'identify' | 'guilds' | 'guilds.join' | 'gdm.join' | 'messages.read' | 'rpc' | 'rpc.api' | 'rpc.notifications.read' | 'webhook.incoming';
 
-export default class Client {
+export class Client {
   private baseURL = 'https://discord.com/api/';
 
   /** Create a new OAuth2 Client. */
@@ -172,5 +172,5 @@ export interface ClientOptions {
   /** OAuth Redirect URI that is sent an access code. */
   redirectURI: string;
   /** Scopes for client access. */
-  scopes: Scope[]
+  scopes: Scope[];
 }

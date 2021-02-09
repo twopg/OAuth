@@ -11,6 +11,8 @@ Cloned from disco-oauth, but with TypeScript support, and less errors - [Docs](h
 ## 2 - Use
 
 ```js
+import { Client } from '@2pg/oauth';
+
 export default new Client({
   id: '533947001578979328',
   secret: '<your_bot_secret>',

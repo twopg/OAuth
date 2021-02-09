@@ -1,3 +1,6 @@
+import { config } from 'dotenv';
+config({ path: 'demo/.env' });
+
 import express from 'express';
 import cookies from 'cookies';
 import client from './auth-client';

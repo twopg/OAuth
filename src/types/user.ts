@@ -6,8 +6,8 @@ export default class User {
   locale: string
   /** Whether the user has enabled 2-factor authentication. */
   isMFAEnabled: boolean;
-  /** The user's discriminator. */
-  discriminator: number;
+  /** The user's discriminator (e.g. '0001'). */
+  discriminator: string;
   /** The user's unique discord ID. */
   id: string;
   /** The user's E-Mail ID. */
@@ -24,6 +24,8 @@ export default class User {
   bot: boolean;
   /** Get the URL of a user's display avatar. */
   readonly displayAvatarURL: string;
+  /** Tag of the user (e.g. ADAMJR#0001) */
+  readonly tag: string;
 
   constructor({
     username,
@@ -41,7 +43,7 @@ export default class User {
     this.username = username;
     this.locale = locale;
     this.isMFAEnabled = mfa_enabled;
-    this.discriminator = parseInt(discriminator);
+    this.discriminator = parseInt(discriminator).toString().padStart(4, '0');
     this.id = id;
     this.emailId = email;
     this.emailVerified = verified;
@@ -50,6 +52,7 @@ export default class User {
     this.premiumType = premium_type === 0 ? 'None' : premium_type === 1 ? 'Nitro Classic' : 'Nitro';
     this.bot = bot;
     this.displayAvatarURL = this.avatarURL({ dynamic: true, size: 256 });
+    this.tag = `${this.username}#${this.discriminator}`;
 
     this.buildFlags(flags);
   }
@@ -95,7 +98,7 @@ export default class User {
     const extension = (this.avatarHash?.startsWith('a_') && options.dynamic) ? 'gif' : 'png';
 
     return `https://cdn.discordapp.com/${this.avatarHash ? '' : 'embed/'}avatars/${
-      this.avatarHash ? `${this.id}/${this.avatarHash}` : this.discriminator % 5
+      this.avatarHash ? `${this.id}/${this.avatarHash}` : parseInt(this.discriminator) % 5
     }.${(this.avatarHash) ? extension : 'png'}?size=${options.size}`;
   }
 }

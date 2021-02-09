@@ -16,14 +16,24 @@
       margin-right: 10px;
       text-decoration: none;
     }
+
+    img {
+      border-radius: 15px;
+      height: 64px;
+      width: 64px;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>User</h1>
     <div>
-      <strong>User:</strong>
-      <span class="username"><%= (user) ? user.username : 'Not logged in' %></span>
+      <% if (user) { %>
+        <img class="avatar" src="<%= user.displayAvatarURL %>">
+        <h2 class="username"><%= user.tag %></h2>
+      <% } else { %>
+      <span class="username">Not logged in</span>
+      <% } %>
     </div>
     <div>
       <strong>Guilds:</strong>
