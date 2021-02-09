@@ -4,7 +4,7 @@
   "description": "Simply make Discord OAuth requests. Built with TypeScript, used by 2PG.",
   "main": "lib/client.js",
   "scripts": {
-    "docs": "typedoc --out docs src --theme docs-theme",
+    "docs": "typedoc --out docs/www src --theme docs-theme",
     "demo": "ts-node-dev demo/server.ts"
   },
   "repository": {
